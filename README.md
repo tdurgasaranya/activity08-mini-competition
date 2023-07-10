@@ -1,9 +1,9 @@
 Activity 08 - Classification Mini-Competition
 ================
 
-This activity is intended to be completed in one week - two 75-minute
-class meetings and outside of class work. Think of this as a
-“culminating activity” for Module 3 (Classification).
+This activity is intended to be completed in one week - two class
+meetings and outside of class work. Think of this as a “culminating
+activity” for Module 3 (Classification).
 
 In this repository/directory, you should see the following items:
 

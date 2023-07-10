@@ -11,12 +11,13 @@ In this repository/directory you should see the following items:
 ## The “rules”
 
 You and your team have been “hired” by Mr. Greg Sperlbaum - purchasing
-manager at a local supply chain company. You are tasked with predicting
-future inventory needs based on past monthly sales.
+manager at a local supply chain company and long-time friend of
+Bradford. You are tasked with predicting future inventory needs based on
+past monthly sales.
 
-By **4:00 pm on Tuesday, March 28** you need to create a Google slide
-deck that only contains four-slides. At least one member from each team
-will provide a 5-minute maximum presentation of these slides.
+By **6:00 pm on Monday, July 17** you need to create a Google slide deck
+that only contains four-slides. At least one member from each team will
+provide a 5-minute maximum presentation of these slides.
 
 Instead of asking questions after each presentation, we will hopefully
 have time at the end to have a closing conversation. Also, to help
@@ -27,7 +28,7 @@ RMarkdown](https://rmarkdown.rstudio.com/lesson-11.html).
 Upload your slides to this Google folder by the deadline:
 <https://drive.google.com/drive/folders/1oVFzj9wA7FdMazi-fORrz5Y6B8qRjF6e?usp=share_link>
 
-Presentation order will be randomly determined around 4:01 pm and edits
+Presentation order will be randomly determined around 6:01 pm and edits
 to your slides will not be allowed.
 
 While this is a friendly competition, the main purpose is to share your
@@ -47,10 +48,10 @@ The best group based on these categories will receive a prize.
 
 ### Your task
 
-You want to be able to predict future inventory needs for as many unique
-products as possible. This should include efficient code that **fits a
-model for each product** you decide to model. If you are not including
-certain products, explain why.
+You want to be able to **predict** future inventory needs for as many
+unique products as possible. This should include efficient code that
+fits a model for *each* product you decide to model. If you are not
+including certain products, explain why.
 
 While we have not explored assessing generalized linear models for count
 data in class, it is part of your task to research and implement
@@ -58,15 +59,11 @@ assessing the “goodness” of your predictions.
 
 ### Data
 
-These are real sales data from a real company. Please do not distribute
-this data beyond our class and do not push this to GitHub. Reach out to
-me if you need assistance to avoid doing this.
-
-You have an `inventory.csv` datafile posted on Blackboard directly under
-the link you used to access this GitHub repository. You will need to
-download this file, then upload to your RStudio Workbench session
-(deleting the file from your personal machine once this competition is
-over).
+These are real sales data from a real company. You have an
+`inventory.csv` datafile posted on Blackboard directly under the link
+you used to access this GitHub repository. You will need to download
+this file, then upload to your RStudio Workbench session (deleting the
+file from your personal machine once this competition is over).
 
 To focus your analysis and avoid some pitfalls, this is a subset of all
 products sold by this company. Specifically, this file only contains
