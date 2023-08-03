@@ -1,8 +1,132 @@
 ---
 title: "Activity 8 - Mini-competition"
+Author: Durga
 output: github_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+```
+---
+title: "Inventory Report"
+output: Inventory.pdf
+date: "2023-07-15"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Loading the libraries and packages as required
+
+- With using Tidymodel package/Library we will achieve the prediction model for this scenario
+
+```{r}
+library(dplyr)
+library(ggplot2)
+#install.packages("tidymodels")
+library(tidymodels)
+```
+#Loading the file and summary of the file
+
+ - Read and create the data to a Dataframe
+- Dimensions of the file : 3 Columns, 26,352 rows data
+- Item character and Week, Sold numerical data
+
+```{r}
+test_file <- read.csv("/Users/saranyat/Downloads/inventory.csv")
+test_file
+
+summarise(test_file)
+head(test_file)
+```
+
+#Subset the data with filtering for items only sold > 0 items
+
+- Filtering data makes it less complex and more efficient
+
+```{r}
+fd <- test_file[test_file$sold > 0, ]
+fd
+
+```
+
+
+#Splitting the data into Training and Test data sets for the model based on the Filtered data above
+
+- Training dataset = 80%
+- Testing data = 20%
+
+```{r}
+
+# Split the data into training and testing sets manually
+set.seed(123)
+na.omit(fd)
+trainIndex <- sample(nrow(fd), floor(0.8 * nrow(fd)))
+trainData <- fd[trainIndex, ]
+testData <- fd[-trainIndex, ]
+
+trainData
+testData
+
+```
+
+#Train and creating a linear regression model with "Tidymodel"
+
+```{r}
+# Fit a linear regression model
+
+lmodel <- lm(sold ~ item_no + week, data = trainData)
+lmodel
+
+```
+```{r}
+
+library(tidyr)
+trainData$item_no <- replace_na(trainData$item_no, "NA")
+
+
+testData$item_no <- replace_na(trainData$item_no, "NA")
+
+
+levels(trainData$item_no)
+
+levels(testData$item_no)
+
+testData$item_no <- factor(testData$item_no, levels = levels(trainData$item_no))
+
+
+class(lmodel)
+
+str(testData)  # This will show the structure of the 'futureData' dataset
+
+future_predictions <- predict(lmodel, newdata = testData)
+
+# ensure that the futureData dataset has the same levels for the categorical variable item_no as the trainData dataset. Here's a step-by-step guide to fix the issue:
+
+summary(future_predictions)
+```
+
+
+```{r}
+# Making predictions on the test data
+
+testData$item_no <- factor(testData$item_no, levels = levels(trainData$item_no))
+predictions <- predict(lmodel, newdata = testData)
+
+summary(predictions)
+
+```
+
+
+
+
+```{r}
+
+# Evaluate model performance
+mse <- mean((predictions - testData$sold)^2)
+rmse <- sqrt(mse)
+cat("Root Mean Squared Error (RMSE):", rmse, "\n")
+
+
 ```
